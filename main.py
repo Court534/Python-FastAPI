@@ -1,8 +1,8 @@
 # Import necessary modules and classes
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from typing import List 
 from models import User, Gender, Role
-from uuid import UUID, uuid4
+from uuid import UUID 
 
 # Create a FastAPI instance
 app = FastAPI()
@@ -45,3 +45,12 @@ async def delete_user(user_id: UUID):
         if user.id == user_id:
             db.remove(user)
             return {"message": "User deleted successfully"}
+        raise HTTPException(status_code=404, detail=f"User ID:'{user_id}' not found")
+    
+@app.put("/users/{user_id}")
+async def update_user(user_id: UUID, user: User):
+    for index, user in enumerate(db):
+        if user.id == user_id:
+            db[index] = user
+            return {"message": "User updated successfully"}
+        raise HTTPException(status_code=404, detail=f"User ID:'{user_id}' not found")
