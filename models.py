@@ -7,7 +7,7 @@ class Gender(str, Enum):
     male = 'male'
     female = 'female'
     
-class Roles(str, Enum):
+class Role(str, Enum):
     admin = 'male'
     user = 'female'
     student = 'female'
@@ -18,4 +18,4 @@ class User(BaseModel):
     last_name: str
     middle_name: Optional[str]
     gender: Gender
-    roles: List[Roles]
+    roles: List[Role]
