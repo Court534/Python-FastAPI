@@ -2,7 +2,7 @@
 from fastapi import FastAPI
 from typing import List 
 from models import User, Gender, Role
-from uuid import uuid4
+from uuid import UUID, uuid4
 
 # Create a FastAPI instance
 app = FastAPI()
