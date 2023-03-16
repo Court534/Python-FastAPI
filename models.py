@@ -4,13 +4,13 @@ from pydantic import BaseModel
 from enum import Enum
 
 class Gender(str, Enum):
-    male = 'male'
-    female = 'female'
+    male = "male"
+    female = "female"
     
 class Role(str, Enum):
-    admin = 'male'
-    user = 'female'
-    student = 'female'
+    admin = "admin"
+    user = "user"
+    student = "student"
   
 class User(BaseModel):
     id: Optional[UUID] = uuid4()

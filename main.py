@@ -5,21 +5,25 @@ from uuid import uuid4
 
 app = FastAPI()
 
-db: List [User] = [
-    User(id-uuid4(), 
-         first_name="John",
-         last_name="Doe",
-         gender="Gender.male",
+db: List[User] = [
+    User(id=uuid4(), 
+         first_name= "John",
+         last_name= "Doe",
+         gender= Gender.male,
          roles=[Role.student]
         ),
-    User(id-uuid4(), 
-         first_name="Jannet",
-         last_name="Doe",
-         gender="Gender.female",
+    User(id=uuid4(), 
+         first_name= "Jannet",
+         last_name= "Doe",
+         gender= Gender.female,
          roles=[Role.admin, Role.user]
-        ),
+        )
 ]
 
 @app.get("/")
 async def root ():
     return {"Hello": "World"}
+
+@app.get("/users")
+async def fetch_users():
+    return db
